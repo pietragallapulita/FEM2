@@ -78,7 +78,7 @@
 <body>
     <div class="container">
         <h1>Raccolta Fondi</h1>
-        <p class="details">Abbiamo raccolto <strong id="raised-amount">€0</strong> su un obiettivo di <strong>€0</strong>.</p>
+        <p class="details">Abbiamo raccolto <strong id="raised-amount">€0</strong> su un obiettivo di <strong>€1100</strong>.</p>
         <div class="progress-bar-container">
             <div id="progress-bar" class="progress-bar"></div>
         </div>
@@ -149,9 +149,9 @@
                     const donors = results.data;
                     const donorList = document.getElementById("donor-list");
                     donors.forEach(donor => {
-                        if (donor.Nome && donor.Importo && donor.Data) { // Verifica che esistano tutte le colonne
+                        if (donor.Nome && donor.Cognome && donor.Anno) { // Verifica che esistano tutte le colonne
                             const li = document.createElement("li");
-                            li.textContent = `${donor.Nome} ha donato €${donor.Importo} il ${donor.Data}`;
+                            li.textContent = `${donor.Nome} ha donato €${donor.Cognome} il ${donor.Anno}`;
                             donorList.appendChild(li);
                         }
                     });
