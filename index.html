@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raccolta Fondi</title>
+    <title>Stato Avanzamento Raccolta Fondi</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -77,14 +77,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Sato di avanzamento della Raccolta Fondi</h1>
-        <p class="details">Abbiamo raccolto <strong id="raised-amount">€30</strong> su un obiettivo di <strong>€1100</strong>.</p>
+        <h1>Raccolta Fondi</h1>
+        <p class="details">Abbiamo raccolto <strong id="raised-amount">€0</strong> su un obiettivo di <strong>€0</strong>.</p>
         <div class="progress-bar-container">
             <div id="progress-bar" class="progress-bar"></div>
         </div>
         <!-- Quadrante con orario e data -->
         <div class="clock" id="current-date">
-             <span id="date-time"></span>
+            Oggi,  <span id="date-time"></span>
         </div>
         <!-- Timer conto alla rovescia -->
         <div class="countdown" id="countdown-timer">
@@ -103,7 +103,7 @@
     <script>
         // Valori di esempio
         const goalAmount = 1100;  // Obiettivo di raccolta (in euro)
-        let raisedAmount = 200;   // Somma raccolta attuale (in euro)
+        let raisedAmount = 1100;   // Somma raccolta attuale (in euro)
 
         // Funzione per aggiornare la barra di avanzamento
         function updateProgressBar() {
@@ -149,9 +149,9 @@
                     const donors = results.data;
                     const donorList = document.getElementById("donor-list");
                     donors.forEach(donor => {
-                        if (donor.Nome) { // Assumendo che la colonna si chiami "Nome"
+                        if (donor.Nome && donor.Importo && donor.Data) { // Verifica che esistano tutte le colonne
                             const li = document.createElement("li");
-                            li.textContent = donor.Nome;
+                            li.textContent = `${donor.Nome} ha donato €${donor.Importo} il ${donor.Data}`;
                             donorList.appendChild(li);
                         }
                     });
