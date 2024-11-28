@@ -24,6 +24,7 @@
         h1 {
             font-size: 1.8em;
             color: #2c3e50;
+            margin-bottom: 10px;
         }
         .progress-bar-container {
             width: 100%;
@@ -37,11 +38,21 @@
             height: 100%;
             width: 50%; /* Aggiorna qui la percentuale */
             background-color: #27ae60;
-            line-height: 20px;
         }
         .details {
             font-size: 1.2em;
             margin: 10px 0;
+        }
+        .clock, .countdown {
+            font-size: 1.2em;
+            margin: 15px 0;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .countdown {
+            font-weight: bold;
         }
     </style>
 </head>
@@ -52,6 +63,47 @@
         <div class="progress-bar-container">
             <div class="progress-bar"></div>
         </div>
+        <!-- Quadrante con orario e data -->
+        <div class="clock" id="current-date">
+            Data e ora corrente: <span id="date-time"></span>
+        </div>
+        <!-- Timer conto alla rovescia -->
+        <div class="countdown" id="countdown-timer">
+            Tempo residuo per la raccolta: <span id="time-remaining"></span>
+        </div>
     </div>
+
+    <script>
+        // Aggiorna orario e data corrente
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            document.getElementById("date-time").textContent = now.toLocaleDateString("it-IT", options);
+        }
+
+        // Calcola il conto alla rovescia
+        function updateCountdown() {
+            const deadline = new Date("2025-01-06T23:59:59");
+            const now = new Date();
+            const timeDifference = deadline - now;
+
+            if (timeDifference > 0) {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById("time-remaining").textContent = 
+                    `${days} giorni, ${hours} ore, ${minutes} minuti, ${seconds} secondi`;
+            } else {
+                document.getElementById("time-remaining").textContent = "La raccolta è terminata!";
+            }
+        }
+
+        // Avvia gli aggiornamenti ogni secondo
+        setInterval(updateClock, 1000);
+        setInterval(updateCountdown, 1000);
+    </script>
 </body>
 </html>
+
