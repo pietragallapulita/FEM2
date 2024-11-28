@@ -54,6 +54,26 @@
         .countdown {
             font-weight: bold;
         }
+        .donors {
+            margin: 20px 0;
+            padding: 10px;
+            text-align: left;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .donors ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .donors li {
+            margin: 5px 0;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+        }
     </style>
 </head>
 <body>
@@ -71,8 +91,16 @@
         <div class="countdown" id="countdown-timer">
             Tempo residuo per la raccolta: <span id="time-remaining"></span>
         </div>
+        <!-- Elenco scorrevole dei donatori -->
+        <div class="donors">
+            <h2>Donatori:</h2>
+            <ul id="donor-list">
+                <!-- I nomi saranno caricati dinamicamente -->
+            </ul>
+        </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script>
         // Aggiorna orario e data corrente
         function updateClock() {
@@ -100,10 +128,34 @@
             }
         }
 
-        // Avvia gli aggiornamenti ogni secondo
+        // Carica i nominativi dei donatori da un file CSV
+        function loadDonors() {
+            const csvFileUrl = "donors.csv"; // Percorso del file CSV sul server
+            Papa.parse(csvFileUrl, {
+                download: true,
+                header: true,
+                complete: function(results) {
+                    const donors = results.data;
+                    const donorList = document.getElementById("donor-list");
+                    donors.forEach(donor => {
+                        if (donor.Nome) { // Assumendo che la colonna si chiami "Nome"
+                            const li = document.createElement("li");
+                            li.textContent = donor.Nome;
+                            donorList.appendChild(li);
+                        }
+                    });
+                }
+            });
+        }
+
+        // Avvia gli aggiornamenti
         setInterval(updateClock, 1000);
         setInterval(updateCountdown, 1000);
+
+        // Carica i donatori all'avvio
+        loadDonors();
     </script>
 </body>
 </html>
+
 
