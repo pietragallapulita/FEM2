@@ -36,7 +36,6 @@
         }
         .progress-bar {
             height: 100%;
-            width: 50%; /* Aggiorna qui la percentuale */
             background-color: #27ae60;
         }
         .details {
@@ -78,14 +77,14 @@
 </head>
 <body>
     <div class="container">
-        <h1>Stato di avanzamento della Raccolta Fondi</h1>
-        <p class="details">Abbiamo raccolto <strong>€60</strong> su un obiettivo di <strong>€1100</strong>.</p>
+        <h1>Raccolta Fondi</h1>
+        <p class="details">Abbiamo raccolto <strong id="raised-amount">€500</strong> su un obiettivo di <strong>€1000</strong>.</p>
         <div class="progress-bar-container">
-            <div class="progress-bar"></div>
+            <div id="progress-bar" class="progress-bar"></div>
         </div>
         <!-- Quadrante con orario e data -->
         <div class="clock" id="current-date">
-          <span id="date-time"></span>
+            Data e ora corrente: <span id="date-time"></span>
         </div>
         <!-- Timer conto alla rovescia -->
         <div class="countdown" id="countdown-timer">
@@ -102,6 +101,18 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <script>
+        // Valori di esempio
+        const goalAmount = 1000;  // Obiettivo di raccolta (in euro)
+        let raisedAmount = 500;   // Somma raccolta attuale (in euro)
+
+        // Funzione per aggiornare la barra di avanzamento
+        function updateProgressBar() {
+            const progress = (raisedAmount / goalAmount) * 100; // Percentuale di raccolta
+            const progressBar = document.getElementById("progress-bar");
+            progressBar.style.width = progress + "%";  // Imposta la larghezza della barra
+            document.getElementById("raised-amount").textContent = "€" + raisedAmount; // Mostra la somma raccolta
+        }
+
         // Aggiorna orario e data corrente
         function updateClock() {
             const now = new Date();
@@ -154,8 +165,9 @@
 
         // Carica i donatori all'avvio
         loadDonors();
+
+        // Aggiorna la barra di avanzamento all'avvio
+        updateProgressBar();
     </script>
 </body>
 </html>
-
-
