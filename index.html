@@ -151,7 +151,7 @@
                     const donorList = document.getElementById("donor-list");
                     donors.forEach(donor => {
                         // Verifica che le colonne 'Nome', 'Cognome' e 'Anno' esistano
-                        if (donor.Nome && donor.Cognome && donor.Anno) {
+                        if (donor.Nome && donor.Cognome) {
                             const li = document.createElement("li");
                             li.textContent = `${donor.Nome} ${donor.Cognome} ${donor.Anno}`;
                             donorList.appendChild(li);
