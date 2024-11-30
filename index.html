@@ -82,40 +82,43 @@
         box-sizing: border-box;
     }
 
+ .progress-bar-steps {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
     .circle {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
         font-weight: bold;
         color: white;
-        margin: 0 5px; /* Aggiungi un po' di margine tra i cerchi */
+        margin: 10px 0; /* Aggiungi un po' di spazio tra i cerchi */
     }
 
     .line {
-        height: 4px;
+        width: 4px;
+        height: 30px;
         background-color: #ccc;
-        flex-grow: 1; /* La linea prende tutto lo spazio rimanente tra i cerchi */
-        margin: 0 5px; /* Margine tra linea e cerchi */
+        margin: 0 0 10px 0; /* Spazio tra le linee */
     }
 
     /* Ottimizzazione per schermi mobili */
     @media (max-width: 600px) {
-        .progress-bar-steps {
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
         .circle {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
         }
 
         .line {
-            width: 40px;
+            height: 20px; /* Riduci la lunghezza della linea per schermi piccoli */
         }
     }
     </style>
