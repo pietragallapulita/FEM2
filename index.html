@@ -31,6 +31,52 @@
             max-width: 100%;
             max-height: 100%;
         }
+
+#popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #popup img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        #popup .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        
         .progress-bar-container {
             width: 100%;
             background-color: #e0e0e0;
@@ -39,6 +85,8 @@
             margin: 20px 0;
             height: 20px;
         }
+
+        
         .progress-bar-container {
             width: 100%;
             background-color: #e0e0e0;
@@ -149,8 +197,18 @@
         </div>
      </div>
         <div class="image-container">
-            <img src="ricevutaFEM.jpeg" alt="Descrizione dell'immagine">
+            <img src="ricevutaFEM.jpeg" alt="ricevuta">
         </div>
+
+ <div id="container">
+            <button id="openButton">Apri scheda parametri</button>
+        </div>
+    
+        <div id="popup">
+            <span class="close" id="closeButton">&times;</span>
+            <img src="parametri.jpeg" alt="parametri">
+        </div>
+    
         <!-- Timer conto alla rovescia 
         <div class="countdown" id="countdown-timer">
             Tempo residuo per la raccolta: <span id="time-remaining"></span>
