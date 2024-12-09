@@ -216,6 +216,23 @@
         margin: 0 0 10px 0; /* Spazio tra le linee */
     }
 
+     .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.5);
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Aggiunge una leggera ombra sopra il footer */
+}
+
+/* Logo: personalizza la larghezza o altezza */
+.footer img {
+    width: 120px;
+    height: auto;
+}
+
     /* Ottimizzazione per schermi mobili */
     @media (max-width: 600px) {
         .circle {
@@ -404,6 +421,10 @@
         }
     });
 </script>
+
+<div class="footer">
+    <img src="fem2.png" alt="Logo">
+</div>
     
 </body>
 </html>
