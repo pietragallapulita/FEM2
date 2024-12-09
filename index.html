@@ -27,6 +27,38 @@
             margin-bottom: 10px;
         }
 
+         /* Contenitore principale della galleria */
+         .gallery-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* La galleria sarà centrata verticalmente */
+        }
+
+        /* Contenitore specifico per la galleria */
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px; /* Spazi tra le immagini */
+        }
+
+        /* Stile delle immagini */
+        .gallery-container img {
+            width: 150px; /* Larghezza uniforme */
+            height: 150px; /* Altezza uniforme */
+            object-fit: cover; /* Adatta l'immagine senza distorsioni */
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        /* Effetto hover */
+        .gallery-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
          .image-container img {
             max-width: 100%;
             max-height: 100%;
@@ -204,6 +236,18 @@
             Oggi, <span id="date-time"></span>
         </div>
      </div>
+
+    <section class="gallery-wrapper">
+        <div class="gallery-container">
+            <img src="im1.jpeg" alt="Descrizione immagine 1">
+            <img src="im2.jpeg" alt="Descrizione immagine 2">
+            <img src="im3.jpeg" alt="Descrizione immagine 3">
+            <img src="im4.jpeg" alt="Descrizione immagine 4">
+            <img src="im5.jpeg" alt="Descrizione immagine 5">
+            <img src="im6.jpeg" alt="Descrizione immagine 5">
+        </div>
+        </section>
+    
         <div class="image-container">
             <img src="ricevutaFEM.jpeg" alt="ricevuta">
         </div>
