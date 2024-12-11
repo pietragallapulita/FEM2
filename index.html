@@ -217,6 +217,18 @@
         background-color: #ccc;
         margin: 0 0 10px 0; /* Spazio tra le linee */
     }
+         @keyframes lampeggia-verde {
+  0%, 100% {
+    background-color: rgb(204, 194, 194);
+  }
+  50% {
+    background-color: green;
+  }
+}
+
+.circle.blink {
+  animation: lampeggia-verde 1s infinite;
+}
 
      .footer {
     position: fixed;
@@ -281,7 +293,7 @@
         <div class="line" style="background-color: green;"></div>
         
         <!-- Fase 6 -->
-        <div class="circle" style="background-color: rgb(204, 194, 194);width: 110px;
+        <div class="circle blink" style="background-color: rgb(204, 194, 194);width: 110px;
         height: 110px;">Risultati</div>  
     </div>
 
