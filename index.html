@@ -254,7 +254,7 @@
 <body>
     <div class="container">
         <h1>Stato Avanzamento Raccolta Fondi</h1>
-        <p class="details">Obiettivo Raccolta Raggiunto! Campionamento effettuato con successo in data 09/12/2024. Campioni spediti al Laboratorio.</p>
+        <p class="details">Obiettivo Raccolta Raggiunto! Campionamento effettuato con successo in data 09/12/2024. Campioni giunti al Laboratorio.</p>
             <!-- <strong id="raised-amount">€0</strong> su un obiettivo di <strong>€1100</strong>.</p> -->
             <div id="progress-bar" class="progress-bar"></div>
         </div>
@@ -277,13 +277,18 @@
         <div class="line" style="background-color: green;"></div>
 
         <!-- Fase 5 -->
-        <div class="circle" style="background-color: rgb(204, 194, 194); ">Laboratorio</div>
-        <div class="line" style="background-color: #ccc;"></div>
+        <div class="circle" style="background-color: rgb(135, 231, 135) ; ">Laboratorio</div>
+        <div class="line" style="background-color: green;"></div>
         
         <!-- Fase 6 -->
-        <div class="circle" style="background-color: gray;width: 110px;
+        <div class="circle" style="background-color: rgb(204, 194, 194);width: 110px;
         height: 110px;">Risultati</div>  
     </div>
+
+     <!-- Timer conto alla rovescia -->
+        <div class="countdown" id="countdown-timer">
+            Tempo previsto per i risultati: <span id="time-remaining"></span>
+        </div> 
 
         <!-- Quadrante con orario e data 
         <div class="clock" id="current-date">
@@ -315,10 +320,7 @@
 -->
 
     
-        <!-- Timer conto alla rovescia 
-        <div class="countdown" id="countdown-timer">
-            Tempo residuo per la raccolta: <span id="time-remaining"></span>
-        </div> -->
+       
         <!-- Elenco scorrevole dei donatori -->
         <div class="donors">
             <h2>Donatori:</h2>
@@ -351,7 +353,7 @@
 
         // Calcola il conto alla rovescia
         function updateCountdown() {
-            const deadline = new Date("2025-01-06T23:59:59");
+            const deadline = new Date("2025-12-21T23:59:59");
             const now = new Date();
             const timeDifference = deadline - now;
 
